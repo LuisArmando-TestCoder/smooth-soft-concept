@@ -1,0 +1,64 @@
+input[type="checkbox"].two-line-to-x-ham-trigger {
+  --ham-size: 50rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: auto;
+  background: transparent;
+  border: 0;
+  width: calc(var(--ham-size) + var(--ham-size) * 0.275);
+  height: calc(var(--ham-size) + var(--ham-size) * 0.1);
+  outline: none;
+  mix-blend-mode: exclusion;
+
+  position: fixed;
+  top: 25rem;
+  right: 25rem;
+  z-index: 2;
+
+  &:after,
+  &:before {
+    content: "";
+    width: var(--ham-size);
+    height: calc(var(--ham-size) * 0.05);
+    background: var(--color-foreground);
+    display: block;
+    position: absolute;
+    transition: 0.3s;
+    border-radius: 50rem;
+  }
+
+  &:after {
+    top: calc(var(--ham-size) * 0.4);
+  }
+
+  &:before {
+    top: calc(var(--ham-size) * 0.6);
+  }
+
+  &:checked {
+    cursor: pointer;
+
+    &:before {
+      transform: rotate(-45deg);
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+
+    &:after,
+    &:before {
+      top: calc(var(--ham-size) * 0.5);
+    }
+  }
+
+  &:active {
+    cursor: pointer;
+
+    &:after,
+    &:before {
+      transform: rotate(0deg);
+    }
+  }
+}
